@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>General Terms and Conditions — Hotel Kotva</title>
+<link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16">
+<link rel="icon" type="image/png" href="/assets/img/favicon-48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/assets/img/favicon-192.png" sizes="192x192">
+<link rel="icon" type="image/svg+xml" href="/assets/img/icon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <style>
+    :root { color-scheme: light; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #0E2E4B;
+      color: #f4f1ea;
+      min-height: 100vh;
+      padding: 40px 24px;
+    }
+    .card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #101d2d;
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 14px;
+      padding: 44px 36px;
+    }
+    h1 { font-size: 26px; font-weight: normal; color: #A8382B; margin-bottom: 6px; }
+    .updated { font-size: 13px; color: #8a97a5; margin-bottom: 26px; }
+    h2 { font-size: 18px; font-weight: normal; color: #C24A38; margin: 26px 0 8px; }
+    p { font-size: 15.5px; line-height: 1.65; color: #d9d4c8; margin-bottom: 10px; }
+    a { color: #C24A38; }
+    a.btn {
+      display: inline-block; margin-top: 28px;
+      background: #A8382B; color: #0E2E4B; text-decoration: none;
+      font-weight: bold; font-size: 15px; padding: 13px 26px; border-radius: 8px;
+    }
+    @media (max-width: 560px) { .card { padding: 32px 20px; } }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="h1"></h1>
+    <p class="updated" id="updated"></p>
+    <div id="sections"></div>
+    <a class="btn" id="back" href="/"></a>
+  </div>
+  <script>
+    (function () {
+      var STRINGS = {
+        en: {
+          title: "General Terms and Conditions — Hotel Kotva",
+          h1: "General Terms and Conditions",
+          updated: "Last updated: 3 August 2026",
+          back: "Back to the website",
+          sections: [
+            ["Your booking",
+             "Bookings made on hotelkotva.eu are direct reservations with Hotel Kotva, Sunny Beach, Bulgaria. When you complete a booking you receive a reservation number (KTV-…) — please keep it for any correspondence about your stay."],
+            ["Prices",
+             "Prices are shown in EUR, per room per night, on an All Inclusive basis, for the dates and guests you select. The standard price and your direct-booking discount are shown before payment — the discounted total is the final price of your stay. Children under 3 stay free of charge."],
+            ["Room occupancy",
+             "Our Double Room sleeps a maximum of 2 adults and 2 children (4 people in total). A party that does not fit — 3 adults, 2 adults with 3 or more children, and so on — is automatically priced and reserved as two or more rooms; the number of rooms, the price for all of them and the notice that you are booking more than one room are shown in the booking form before you pay. Online we book for up to 10 adults and 10 children; for a larger group, please call us and we will arrange it for you."],
+            ["Deposit and payment",
+             "To confirm your reservation you pay a deposit now — the percentage of the total shown in the booking form (currently 26%) — by card on Stripe's secure payment page; your card details never reach this website. The remaining balance is paid at the hotel reception on arrival."],
+            ["Availability and confirmation by the hotel",
+             "Every reservation is subject to room availability at the hotel. In the rare case that the hotel cannot honour your reservation — for example because it is fully booked for your dates — we will notify you of the cancellation as soon as possible, your deposit will be refunded in full to the card you paid with, and you will be offered the nearest available alternative dates with priority."],
+            ["Changes and cancellations",
+             "To change or cancel a reservation, contact us at +359 554 22422 or bookings@hotelkotva.eu, quoting your reservation number. Cancellation terms for your specific dates can be confirmed at any time before you pay — just ask."],
+            ["Contact",
+             "Hotel Kotva · Southern Sunny Beach · 8240 Sunny Beach, Bulgaria · +359 554 22422 · bookings@hotelkotva.eu"]
+          ]
+        },
+        bg: {
+          title: "Общи условия — Хотел Котва",
+          h1: "Общи условия",
+          updated: "Последна актуализация: 3 август 2026 г.",
+          back: "Обратно към сайта",
+          sections: [
+            ["Вашата резервация",
+             "Резервациите, направени на hotelkotva.eu, са директни резервации в Хотел Котва, Слънчев бряг, България. При завършване на резервация получавате номер на резервация (KTV-…) — запазете го за всяка кореспонденция относно престоя ви."],
+            ["Цени",
+             "Цените са в евро, на стая на нощувка, на база All Inclusive, за избраните от вас дати и гости. Стандартната цена и отстъпката за директна резервация се показват преди плащане — намалената обща сума е крайната цена на престоя ви. Деца до 3 години нощуват безплатно."],
+            ["Настаняване в стая",
+             "Двойната стая побира максимум 2 възрастни и 2 деца (общо 4 души). Група, която не се побира — 3 възрастни, 2 възрастни с 3 или повече деца и т.н. — автоматично се остойностява и резервира като две или повече стаи; броят на стаите, цената за всички тях и уведомлението, че резервирате повече от една стая, се показват във формата за резервация преди плащането. Онлайн резервираме за до 10 възрастни и 10 деца; за по-голяма група ни се обадете и ще организираме всичко за вас."],
+            ["Капаро и плащане",
+             "За да потвърдите резервацията, сега заплащате капаро — процентът от общата сума, посочен във формата за резервация (в момента 26%) — с карта, през защитената страница за плащане на Stripe; данните на картата ви никога не достигат до този сайт. Остатъкът се заплаща на рецепцията на хотела при пристигане."],
+            ["Наличност и потвърждение от хотела",
+             "Всяка резервация зависи от наличността на стаи в хотела. В редкия случай, в който хотелът не може да изпълни резервацията ви — например защото е напълно зает за вашите дати — ще ви уведомим за анулирането възможно най-бързо, капарото ви ще бъде възстановено изцяло по картата, с която сте платили, и с приоритет ще ви бъдат предложени най-близките свободни дати."],
+            ["Промени и анулиране",
+             "За промяна или анулиране на резервация се свържете с нас на +359 554 22422 или bookings@hotelkotva.eu, като посочите номера на резервацията си. Условията за анулиране за вашите конкретни дати можете да потвърдите по всяко време, преди да платите — просто попитайте."],
+            ["Контакт",
+             "Хотел Котва · Южен Слънчев бряг · 8240 Слънчев бряг, България · +359 554 22422 · bookings@hotelkotva.eu"]
+          ]
+        },
+        ro: {
+          title: "Termeni și condiții generale — Hotel Kotva",
+          h1: "Termeni și condiții generale",
+          updated: "Ultima actualizare: 3 august 2026",
+          back: "Înapoi la site",
+          sections: [
+            ["Rezervarea dvs.",
+             "Rezervările făcute pe hotelkotva.eu sunt rezervări directe la Hotel Kotva, Sunny Beach, Bulgaria. La finalizarea rezervării primiți un număr de rezervare (KTV-…) — păstrați-l pentru orice corespondență legată de sejur."],
+            ["Prețuri",
+             "Prețurile sunt afișate în EUR, pe cameră pe noapte, în regim All Inclusive, pentru datele și oaspeții selectați. Prețul standard și reducerea pentru rezervare directă sunt afișate înainte de plată — totalul redus este prețul final al sejurului. Copiii sub 3 ani stau gratuit."],
+            ["Ocuparea camerei",
+             "Camera dublă găzduiește maximum 2 adulți și 2 copii (4 persoane în total). Un grup care nu încape — 3 adulți, 2 adulți cu 3 sau mai mulți copii etc. — este automat tarifat și rezervat ca două sau mai multe camere; numărul de camere, prețul pentru toate și mențiunea că rezervați mai mult de o cameră sunt afișate în formularul de rezervare înainte de plată. Online rezervăm pentru până la 10 adulți și 10 copii; pentru un grup mai mare, sunați-ne și ne ocupăm noi de tot."],
+            ["Avans și plată",
+             "Pentru a confirma rezervarea, achitați acum un avans — procentul din total afișat în formularul de rezervare (în prezent 26%) — cu cardul, pe pagina de plată securizată Stripe; datele cardului dvs. nu ajung niciodată pe acest site. Restul sumei se achită la recepția hotelului, la sosire."],
+            ["Disponibilitate și confirmarea hotelului",
+             "Fiecare rezervare depinde de disponibilitatea camerelor la hotel. În cazul rar în care hotelul nu poate onora rezervarea — de exemplu pentru că este complet ocupat pentru datele dvs. — vă vom anunța anularea cât mai curând posibil, avansul vă va fi rambursat integral pe cardul cu care ați plătit și vi se vor oferi cu prioritate cele mai apropiate date disponibile."],
+            ["Modificări și anulări",
+             "Pentru a modifica sau anula o rezervare, contactați-ne la +359 554 22422 sau bookings@hotelkotva.eu, menționând numărul rezervării. Condițiile de anulare pentru datele dvs. pot fi confirmate oricând înainte de plată — întrebați-ne."],
+            ["Contact",
+             "Hotel Kotva · Southern Sunny Beach · 8240 Sunny Beach, Bulgaria · +359 554 22422 · bookings@hotelkotva.eu"]
+          ]
+        },
+        de: {
+          title: "Allgemeine Geschäftsbedingungen — Hotel Kotva",
+          h1: "Allgemeine Geschäftsbedingungen",
+          updated: "Zuletzt aktualisiert: 3. August 2026",
+          back: "Zurück zur Website",
+          sections: [
+            ["Ihre Buchung",
+             "Buchungen auf hotelkotva.eu sind Direktbuchungen beim Hotel Kotva, Sonnenstrand, Bulgarien. Nach Abschluss der Buchung erhalten Sie eine Reservierungsnummer (KTV-…) — bitte halten Sie sie für jede Korrespondenz zu Ihrem Aufenthalt bereit."],
+            ["Preise",
+             "Die Preise sind in EUR pro Zimmer und Nacht auf Ultra-All-Inclusive-Basis für die gewählten Daten und Gäste angegeben. Standardpreis und Direktbucher-Rabatt werden vor der Zahlung angezeigt — der reduzierte Gesamtbetrag ist der Endpreis Ihres Aufenthalts. Kinder unter 3 Jahren übernachten kostenlos."],
+            ["Zimmerbelegung",
+             "Unser Doppelzimmer bietet Platz für maximal 2 Erwachsene und 2 Kinder (insgesamt 4 Personen). Eine Gruppe, die nicht hineinpasst — 3 Erwachsene, 2 Erwachsene mit 3 oder mehr Kindern usw. — wird automatisch als zwei oder mehr Zimmer berechnet und gebucht; die Anzahl der Zimmer, der Preis für alle Zimmer und der Hinweis, dass Sie mehr als ein Zimmer buchen, werden im Buchungsformular vor der Zahlung angezeigt. Online buchen wir für bis zu 10 Erwachsene und 10 Kinder; für eine größere Gruppe rufen Sie uns bitte an — wir organisieren alles für Sie."],
+            ["Anzahlung und Bezahlung",
+             "Zur Bestätigung Ihrer Reservierung zahlen Sie jetzt eine Anzahlung — den im Buchungsformular angezeigten Prozentsatz der Gesamtsumme (derzeit 26 %) — per Karte über die sichere Zahlungsseite von Stripe; Ihre Kartendaten erreichen diese Website nie. Der Restbetrag wird bei Anreise an der Hotelrezeption bezahlt."],
+            ["Verfügbarkeit und Bestätigung durch das Hotel",
+             "Jede Reservierung steht unter dem Vorbehalt der Zimmerverfügbarkeit im Hotel. In dem seltenen Fall, dass das Hotel Ihre Reservierung nicht erfüllen kann — etwa weil es an Ihren Daten ausgebucht ist — benachrichtigen wir Sie so schnell wie möglich über die Stornierung, Ihre Anzahlung wird vollständig auf die verwendete Karte erstattet, und Ihnen werden mit Priorität die nächstgelegenen verfügbaren Termine angeboten."],
+            ["Änderungen und Stornierungen",
+             "Um eine Reservierung zu ändern oder zu stornieren, kontaktieren Sie uns unter +359 554 22422 oder bookings@hotelkotva.eu unter Angabe Ihrer Reservierungsnummer. Die Stornobedingungen für Ihre konkreten Daten bestätigen wir Ihnen jederzeit vor der Zahlung — fragen Sie einfach."],
+            ["Kontakt",
+             "Hotel Kotva · Südlicher Sonnenstrand · 8240 Sonnenstrand, Bulgarien · +359 554 22422 · bookings@hotelkotva.eu"]
+          ]
+        },
+        ru: {
+          title: "Общие условия — Бутик-отель «Опал»",
+          h1: "Общие условия",
+          updated: "Последнее обновление: 3 августа 2026 г.",
+          back: "Вернуться на сайт",
+          sections: [
+            ["Ваше бронирование",
+             "Бронирования на hotelkotva.eu — это прямые бронирования в бутик-отеле «Опал», Солнечный Берег, Болгария. После завершения бронирования вы получаете номер бронирования (KTV-…) — сохраните его для любой переписки о вашем проживании."],
+            ["Цены",
+             "Цены указаны в евро за номер за ночь по системе All Inclusive для выбранных дат и гостей. Стандартная цена и скидка за прямое бронирование показываются до оплаты — итоговая сумма со скидкой и есть окончательная цена проживания. Дети до 3 лет проживают бесплатно."],
+            ["Размещение в номере",
+             "Двухместный номер вмещает максимум 2 взрослых и 2 детей (всего 4 человека). Компания, которая не помещается — 3 взрослых, 2 взрослых с 3 и более детьми и т. д. — автоматически рассчитывается и бронируется как два или более номера; количество номеров, цена за все номера и уведомление о том, что вы бронируете более одного номера, показываются в форме бронирования до оплаты. Онлайн мы бронируем для не более чем 10 взрослых и 10 детей; для группы побольше позвоните нам — мы всё организуем."],
+            ["Депозит и оплата",
+             "Для подтверждения бронирования вы оплачиваете сейчас депозит — указанный в форме бронирования процент от общей суммы (сейчас 26%) — картой на защищённой платёжной странице Stripe; данные вашей карты никогда не попадают на этот сайт. Остаток оплачивается на стойке регистрации отеля при заезде."],
+            ["Наличие мест и подтверждение отеля",
+             "Каждое бронирование зависит от наличия номеров в отеле. В редком случае, если отель не сможет разместить вас — например, из-за полной загрузки на ваши даты — мы как можно скорее уведомим вас об отмене, депозит будет полностью возвращён на карту, которой вы платили, и вам в приоритетном порядке предложат ближайшие свободные даты."],
+            ["Изменения и отмена",
+             "Чтобы изменить или отменить бронирование, свяжитесь с нами по телефону +359 554 22422 или по адресу bookings@hotelkotva.eu, указав номер бронирования. Условия отмены для ваших конкретных дат можно уточнить в любой момент до оплаты — просто спросите."],
+            ["Контакты",
+             "Бутик-отель «Опал» · бул. Несебр / Стария възел · 8240 Солнечный Берег, Болгария · +359 554 22422 · bookings@hotelkotva.eu"]
+          ]
+        },
+        uk: {
+          title: "Загальні умови — Готель Котва",
+          h1: "Загальні умови",
+          updated: "Останнє оновлення: 4 серпня 2026 р.",
+          back: "Повернутися на сайт",
+          sections: [
+            ["Ваше бронювання",
+             "Бронювання, здійснені на hotelkotva.eu, є прямими бронюваннями в готелі Котва, Сонячний Берег, Болгарія. Після завершення бронювання ви отримуєте номер бронювання (KTV-…) — збережіть його для будь-якого листування щодо вашого перебування."],
+            ["Ціни",
+             "Ціни вказані в євро, за номер за ніч, на базі «все включено», для обраних вами дат і гостей. Стандартна ціна та знижка за пряме бронювання показуються до оплати — сума зі знижкою і є остаточною вартістю перебування. Діти до 3 років проживають безкоштовно."],
+            ["Розміщення в номері",
+             "Двомісний номер вміщує максимум 2 дорослих і 2 дітей (усього 4 особи). Група, яка не вміщується — 3 дорослих, 2 дорослих з 3 або більше дітьми тощо — автоматично прораховується та бронюється як два чи більше номерів; кількість номерів, ціна за всі них і повідомлення про те, що ви бронюєте більше одного номера, показуються у формі бронювання до оплати. Онлайн ми бронюємо до 10 дорослих і 10 дітей; для більшої групи зателефонуйте нам, і ми все організуємо."],
+            ["Депозит і оплата",
+             "Щоб підтвердити бронювання, ви сплачуєте депозит — відсоток від загальної суми, вказаний у формі бронювання (наразі 26%) — карткою на захищеній сторінці оплати Stripe; дані вашої картки ніколи не потрапляють на цей сайт. Залишок сплачується на рецепції готелю після приїзду."],
+            ["Наявність і підтвердження готелем",
+             "Кожне бронювання залежить від наявності номерів у готелі. У рідкісному випадку, коли готель не може виконати ваше бронювання — наприклад, через повну зайнятість на ваші дати — ми повідомимо вас про скасування якнайшвидше, депозит буде повністю повернуто на картку, якою ви платили, і вам із пріоритетом запропонують найближчі вільні дати."],
+            ["Зміни та скасування",
+             "Для зміни або скасування бронювання зв’яжіться з нами за номером +359 554 22422 або bookings@hotelkotva.eu, вказавши номер бронювання. Умови скасування для ваших конкретних дат можна уточнити будь-коли до оплати — просто запитайте."],
+            ["Контакти",
+             "Готель Котва · Південний Сонячний Берег · 8240 Сонячний Берег, Болгарія · +359 554 22422 · bookings@hotelkotva.eu"]
+          ]
+        },
+      };
+      var PAGE = { en: "/", bg: "/bg/", ro: "/ro/", de: "/de/", ru: "/ru/", uk: "/uk/" };
+
+      var params = new URLSearchParams(window.location.search);
+      var lang = STRINGS[params.get("lang")] ? params.get("lang") : "en";
+      var L = STRINGS[lang];
+
+      document.documentElement.lang = lang;
+      document.title = L.title;
+      document.getElementById("h1").textContent = L.h1;
+      document.getElementById("updated").textContent = L.updated;
+      var back = document.getElementById("back");
+      back.textContent = L.back;
+      back.href = PAGE[lang];
+
+      var wrap = document.getElementById("sections");
+      L.sections.forEach(function (s) {
+        var h = document.createElement("h2");
+        h.textContent = s[0];
+        var p = document.createElement("p");
+        p.textContent = s[1];
+        wrap.appendChild(h);
+        wrap.appendChild(p);
+      });
+    })();
+  </script>
+</body>
+</html>

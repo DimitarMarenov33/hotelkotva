@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Reservation confirmed — Hotel Kotva</title>
+<link rel="icon" href="/favicon.ico" sizes="48x48 32x32 16x16">
+<link rel="icon" type="image/png" href="/assets/img/favicon-48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/assets/img/favicon-192.png" sizes="192x192">
+<link rel="icon" type="image/svg+xml" href="/assets/img/icon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <style>
+    :root { color-scheme: light; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #0E2E4B;
+      color: #f4f1ea;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .card {
+      max-width: 560px;
+      width: 100%;
+      background: #101d2d;
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 14px;
+      padding: 48px 32px;
+    }
+    .check {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: #A8382B; color: #0E2E4B;
+      font-size: 34px; line-height: 64px;
+      margin: 0 auto 22px;
+    }
+    h1 { font-size: 26px; font-weight: normal; color: #A8382B; margin-bottom: 14px; }
+    p { font-size: 16px; line-height: 1.6; color: #d9d4c8; margin-bottom: 12px; }
+    .ref {
+      display: inline-block; margin: 10px 0 4px;
+      padding: 8px 18px; border: 1px dashed rgba(201, 162, 39, 0.5);
+      border-radius: 8px; font-size: 18px; letter-spacing: 1px; color: #fff;
+    }
+    .ref-label { font-size: 13px; color: #8a97a5; margin-bottom: 18px; }
+    a.btn {
+      display: inline-block; margin-top: 18px;
+      background: #A8382B; color: #0E2E4B; text-decoration: none;
+      font-weight: bold; font-size: 15px; padding: 13px 26px; border-radius: 8px;
+    }
+    .phone { margin-top: 20px; font-size: 13px; color: #8a97a5; }
+    .phone a { color: #A8382B; text-decoration: none; }
+    .session { margin-top: 14px; font-size: 11px; color: #4a5a6a; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="check">✓</div>
+    <h1 data-i18n="h1">Your reservation is confirmed!</h1>
+    <p data-i18n="p1">Payment received — thank you! A confirmation email with all the details and your welcome pack is on its way (check the spam folder too).</p>
+    <p data-i18n="p2">The remaining balance is paid at the reception on arrival.</p>
+    <div class="ref" id="ref" hidden></div>
+    <div class="ref-label" id="refLabel" data-i18n="refLabel" hidden>Reservation ID</div>
+    <br>
+    <a class="btn" id="back" href="/" data-i18n="back">Back to the website</a>
+    <p class="phone"><span data-i18n="questions">Questions?</span> <a href="tel:+359879905526">+359 554 22422</a></p>
+    <p class="session" id="session"></p>
+  </div>
+  <script>
+    (function () {
+      var STRINGS = {
+        en: {
+          title: "Reservation confirmed — Hotel Kotva",
+          h1: "Your reservation is confirmed!",
+          p1: "Payment received — thank you! A confirmation email with all the details and your welcome pack is on its way (check the spam folder too).",
+          p2: "The remaining balance is paid at the reception on arrival.",
+          refLabel: "Reservation ID",
+          back: "Back to the website",
+          questions: "Questions?"
+        },
+        bg: {
+          title: "Резервацията е потвърдена — Хотел Котва",
+          h1: "Резервацията ви е потвърдена!",
+          p1: "Плащането е получено — благодарим ви! Имейл с потвърждението, всички детайли и вашия приветствен пакет е на път (проверете и папка „Спам“).",
+          p2: "Остатъкът се заплаща на рецепцията при пристигане.",
+          refLabel: "Номер на резервация",
+          back: "Обратно към сайта",
+          questions: "Въпроси?"
+        },
+        ro: {
+          title: "Rezervare confirmată — Hotel Kotva",
+          h1: "Rezervarea dvs. este confirmată!",
+          p1: "Plata a fost primită — vă mulțumim! Un email de confirmare cu toate detaliile și pachetul de bun venit este pe drum (verificați și dosarul Spam).",
+          p2: "Restul sumei se achită la recepție la sosire.",
+          refLabel: "Număr de rezervare",
+          back: "Înapoi la site",
+          questions: "Întrebări?"
+        },
+        de: {
+          title: "Reservierung bestätigt — Hotel Kotva",
+          h1: "Ihre Reservierung ist bestätigt!",
+          p1: "Ihre Zahlung ist eingegangen — vielen Dank! Eine Bestätigungs-E-Mail mit allen Details und Ihrem Willkommenspaket ist unterwegs (prüfen Sie auch den Spam-Ordner).",
+          p2: "Der Restbetrag wird bei Anreise an der Rezeption bezahlt.",
+          refLabel: "Reservierungsnummer",
+          back: "Zurück zur Website",
+          questions: "Fragen?"
+        },
+        ru: {
+          title: "Бронирование подтверждено — Отель Котва",
+          h1: "Ваше бронирование подтверждено!",
+          p1: "Оплата получена — спасибо! Письмо с подтверждением, всеми деталями и приветственным набором уже в пути (проверьте и папку «Спам»).",
+          p2: "Остаток оплачивается на стойке регистрации при заезде.",
+          refLabel: "Номер бронирования",
+          back: "Вернуться на сайт",
+          questions: "Вопросы?"
+        },
+        uk: {
+          title: "Бронювання підтверджено — Готель Котва",
+          h1: "Ваше бронювання підтверджено!",
+          p1: "Дякуємо — депозит отримано, номер закріплено за вами.",
+          p2: "Підтвердження з усіма деталями надіслано на вашу електронну пошту.",
+          refLabel: "Номер бронювання",
+          back: "Повернутися на сайт",
+          help: "Питання? Телефонуйте +359 554 22422."
+        },
+      };
+      var PAGE = { en: "/", bg: "/bg/", ro: "/ro/", de: "/de/", ru: "/ru/", uk: "/uk/" };
+
+      var params = new URLSearchParams(window.location.search);
+      var lang = STRINGS[params.get("lang")] ? params.get("lang") : "en";
+      var L = STRINGS[lang];
+
+      document.documentElement.lang = lang;
+      document.title = L.title;
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n");
+        if (L[key]) el.textContent = L[key];
+      });
+      document.getElementById("back").href = PAGE[lang];
+
+      var ref = params.get("ref");
+      if (ref && /^KTV-\d{6}-[A-Z0-9]{3}$/.test(ref)) {
+        document.getElementById("ref").textContent = ref;
+        document.getElementById("ref").hidden = false;
+        document.getElementById("refLabel").hidden = false;
+      }
+      var sid = params.get("session_id");
+      if (sid && /^cs_[A-Za-z0-9_]+$/.test(sid)) {
+        document.getElementById("session").textContent = sid;
+      }
+    })();
+  </script>
+</body>
+</html>
