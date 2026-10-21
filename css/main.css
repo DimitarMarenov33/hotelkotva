@@ -1049,6 +1049,9 @@ a.review-card:hover { border-color: var(--wave); transform: translateY(-2px); }
   color: rgba(242, 248, 251, .48);
   text-align: center;
 }
+.hb-credit { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; color: rgba(242, 248, 251, .75); }
+.hb-credit:hover { color: var(--sun-hi); text-decoration: underline; }
+.hb-credit img { width: 20px; height: 20px; border-radius: 5px; vertical-align: middle; }
 
 /* ==========================================================================
    BOOKING WIDGET

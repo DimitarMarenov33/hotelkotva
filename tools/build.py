@@ -291,7 +291,7 @@ def footer(lang, c):
       </div>
     </div>
     <p class="footer-bottom">{e(c['footer_bottom'])}</p>
-    <p class="footer-credit">{"Сайт и снимки:" if lang == "bg" else "Website and photos:"} <a href="https://hotelboost.eu/" rel="noopener">HotelBoost</a></p>
+    <p class="footer-credit">{"Сайт и снимки:" if lang == "bg" else "Website and photos:"} <a href="https://hotelboost.eu/" rel="noopener" class="hb-credit"><img src="/hotelboost-mark.svg" alt="" width="20" height="20" loading="lazy" decoding="async"> HotelBoost</a></p>
   </div>
 </footer>
 
